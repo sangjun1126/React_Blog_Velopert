@@ -8,13 +8,18 @@
     "nodemon": "^3.0.3"
   },
   "dependencies": {
+    "dotenv": "^16.4.1",
     "eslint-config-prettier": "^9.1.0",
+    "esm": "^3.2.25",
     "koa": "^2.15.0",
     "koa-bodyparser": "^4.4.1",
-    "koa-router": "^12.0.1"
+    "koa-router": "^12.0.1",
+    "mongoose": "^8.1.1"
   },
   "scripts": {
-    "start": "node src",
+    "start": "node src/index.cjs",
     "start:dev": "nodemon --watch src/ src/index.js"
-  }
+},
+
+  "type": "commonjs"
 }
