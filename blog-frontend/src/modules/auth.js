@@ -1,43 +1,10 @@
-import { createAction, handleActions } from "redux-actions";
-import { produce } from 'immer';
+import {createAction, handleActions} from 'redux-actions';
+import produce from 'immer';
+import { crateRequestActionTypes } from '../lib/createRequestSaga';
 
 const CHANGE_FILED = 'auth/CHANGE_FILED';
 const INITIALIZE_FORM = 'auth/INITIALIZE_FORM';
 
-export const changeField = createAction(
-    CHANGE_FILED,
-    ({form, key, value}) => ({
-        form, // register, login
-        key, // username, password, passwordConfirm
-        value // 실제 바꾸려는 값임
-    })
-);
+const [REGISTER, REGISTER_SUCCESS, REGISTER_FAILURE] = crateRequestActionTypes('auth/REGISTER');
 
-export const initializeForm = createAction(INITIALIZE_FORM, form => form); // register / login
-
-const initialState = {
-    register : {
-        username : '',
-        password : '',
-        passwordConfirm : '',
-    },
-    login : {
-        username : '',
-        password : '',
-    },
-};
-
-const auth = handleActions(
-    {
-        [CHANGE_FILED] : (state, {payload : {form, key, value}}) => produce(state, draft => {
-            draft[form][key] = value; // 예 : state.register.username을 바꿉니다.
-        }),
-        [INITIALIZE_FORM] : (state, {payload : form}) => ({
-            ...state,
-            [form] : initialState[form],
-        }),
-    },
-    initialState,
-    );
-
-export default auth;
+const [LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE] = crateRequestActionTypes('auth/LOGIN');
