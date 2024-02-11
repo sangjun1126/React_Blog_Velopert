@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { changeField, initializeForm, register } from "../../modules/auth";
 import AuthForm from "../../components/auth/AuthForm";
 import {check} from '../../modules/user';
+import {useNavigate} from "react-router-dom";
 
 const RegisterForm = () => {
     const dispatch = useDispatch();
@@ -12,6 +13,10 @@ const RegisterForm = () => {
         authError : auth.authError,
         user : user.user
     }));
+
+    const navigate = useNavigate();
+
+    // 인풋 변경 이�
 
     // 인풋 변경 이벤트 핸들러
     const onChange = e => {
@@ -60,7 +65,7 @@ const RegisterForm = () => {
             console.log("check API 성공");
             console.log(user);
         }
-     }, [user]);
+     }, [navigate, user]);
 
     return (
         <AuthForm
