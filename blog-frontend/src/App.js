@@ -7,6 +7,7 @@ import PostPage from './pages/PostPage';
 
 const App = () => {
   return (
+    // 수정 예정
     <Routes>
       <Route path="/" element={<PostListPage />} />
       <Route path="/login" element={<LoginPage />} />
